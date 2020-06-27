@@ -1,0 +1,10 @@
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\bin\Debug\AIproject.exe.config
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\bin\Debug\AIproject.exe
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\bin\Debug\AIproject.pdb
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\obj\Debug\AIproject.csprojAssemblyReference.cache
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\obj\Debug\AIproject.Form1.resources
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\obj\Debug\AIproject.Properties.Resources.resources
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\obj\Debug\AIproject.csproj.GenerateResource.cache
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\obj\Debug\AIproject.csproj.CoreCompileInputs.cache
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\obj\Debug\AIproject.exe
+D:\petar\GitHub\GraphSearch\AIproject\AIproject\obj\Debug\AIproject.pdb
