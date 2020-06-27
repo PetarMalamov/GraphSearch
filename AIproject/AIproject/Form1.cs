@@ -87,7 +87,7 @@ namespace AIproject
                     path = BFSalgorithm.search(from, to);
                     break;
                 case "Weigth Search":
-                    WSalgorithm.search(from, to);
+                    path = WSalgorithm.search(from, to);
                     break;
                 default:
                     break;

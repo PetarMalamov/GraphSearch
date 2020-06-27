@@ -15,7 +15,7 @@ namespace AIproject.Logic
 			this.graph = graph;
 		}
 
-		public bool search(String from, String to)
+		public List<string> search(String from, String to)
 		{
 
 			Node startNode = graph.getNode(from);
@@ -23,7 +23,7 @@ namespace AIproject.Logic
 
 			if (startNode == null || endNode == null)
 			{
-				return false;
+				return null;
 			}
 
 			List<Node> queue = new List<Node>();
@@ -37,15 +37,14 @@ namespace AIproject.Logic
 				Node testNode = queue.ElementAt(0);
 				queue.RemoveAt(0);
 
-				Console.WriteLine(testNode.name);
-
 				if (testNode.name.Equals(to))
 				{
 
 					Console.WriteLine("The path is:");
-					displayPath(testNode);
+					List<string> path = new List<string>();
+					path = displayPath(testNode, path);
 
-					return true;
+					return path;
 				}
 
 				testNode.isTested = true;
@@ -61,18 +60,18 @@ namespace AIproject.Logic
 				}
 			}
 
-			return false;
+			return null;
 		}
 
 
-		private void displayPath(Node currentEl)
+		private List<string> displayPath(Node currentEl, List<string> path)
 		{
 
 			Console.WriteLine(currentEl.name);
 
 			if (currentEl.depth == 0)
 			{
-				return;
+				return path;
 			}
 
 			List<Node> nodes = currentEl.GetRelatedNodes();
@@ -81,11 +80,11 @@ namespace AIproject.Logic
 			{
 				if (el.depth < currentEl.depth)
 				{
-					displayPath(el);
-					return;
+					displayPath(el,path);
+					break;
 				}
 			}
-
+			return path;
 		}
 
 		private void addNodeToQueue(List<Node> queue, Node placingNode)
