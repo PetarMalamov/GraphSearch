@@ -23,8 +23,6 @@ namespace AIproject
             SearchPanel.Visible = false;
             AddLinkPanel.Visible = false;
             SearchMethod.Items.AddRange(methods);
-            bfs = new BFS(graph);
-            wcs = new WeigthCoordinatesSearch(graph);
         }
 
         private void AddComboBoxItem(ComboBox cb,List<string> items)
@@ -83,6 +81,8 @@ namespace AIproject
             string from = (string)SearchFromCB.SelectedItem;
             string to = (string)SearchToCB.SelectedItem;
             List<string> path = new List<string>();
+            bfs = new BFS(graph);
+            wcs = new WeigthCoordinatesSearch(graph);
             switch ((string)SearchMethod.SelectedItem)
             {
                 case "Shortest path":

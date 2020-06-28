@@ -9,8 +9,9 @@ namespace AIproject.Logic
     class WeigthCoordinatesSearch
     {
 		public Graph graph { get; set; }
-		private double x;
-		private double y;
+		public List<string> LastSearch { get; set; }
+		private double Endx;
+		private double Endy;
 		public WeigthCoordinatesSearch(Graph graph)
 		{
 			this.graph = graph;
@@ -18,7 +19,7 @@ namespace AIproject.Logic
 
 		public List<string> search(String from, String to)
 		{
-
+			LastSearch = new List<string>();
 			Node startNode = graph.getNode(from);
 			Node endNode = graph.getNode(to);
 
@@ -26,11 +27,9 @@ namespace AIproject.Logic
 			{
 				return null;
 			}
-			x = endNode.x;
-			y = endNode.y;
+			Endx = endNode.x;
+			Endy = endNode.y;
 			List<Node> queue = new List<Node>();
-
-			startNode.depth = 0;
 
 			queue.Add(startNode);
 
@@ -39,11 +38,11 @@ namespace AIproject.Logic
 				Node testNode = queue.ElementAt(0);
 				queue.RemoveAt(0);
 
+				LastSearch.Add(testNode.name);
+
 				if (testNode.name.Equals(to))
 				{
-					List<string> path = new List<string>();
-					path = displayPath(testNode, path);
-					return path;
+					return LastSearch;
 				}
 
 				testNode.isTested = true;
@@ -52,8 +51,6 @@ namespace AIproject.Logic
 
 				foreach (Node el in relatedNodes)
 				{
-					if (el.depth == -1)
-						el.depth = testNode.depth + 1;
 
 					addNodeToQueue(queue, el);
 				}
@@ -96,7 +93,6 @@ namespace AIproject.Logic
 			node.weight = calculateFinalWeight(node.x, node.y, node.weight);
 			for (int i = 0; i < nodes.Count(); i++)
 			{
-				nodes[i].weight = calculateFinalWeight(nodes[i].x, nodes[i].y, nodes[i].weight);
 				if (node.weight < nodes[i].weight)
 				{
 					nodes.Insert(i, node);
@@ -109,12 +105,12 @@ namespace AIproject.Logic
 
 		private double calculateFinalWeight(double x, double y, double weight)
 		{
-			double a = Math.Abs(x - this.x);
-			double b = Math.Abs(y - this.y);
+			double a = Math.Abs(x - Endx);
+			double b = Math.Abs(y - Endy);
 
 			double xy = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
 
-			double FW = (weight * 0.8) + (xy * 0.6);
+			double FW = (xy * 0.8) + (weight * 0.6);
 			return FW;
 
 		}
