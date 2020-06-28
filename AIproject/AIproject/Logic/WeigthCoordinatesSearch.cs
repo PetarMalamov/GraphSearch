@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace AIproject.Logic
 {
-    class WeigthSearch
+    class WeigthCoordinatesSearch
     {
 		public Graph graph { get; set; }
-
-		public WeigthSearch(Graph graph)
+		private double x;
+		private double y;
+		public WeigthCoordinatesSearch(Graph graph)
 		{
 			this.graph = graph;
 		}
@@ -25,7 +26,8 @@ namespace AIproject.Logic
 			{
 				return null;
 			}
-
+			x = endNode.x;
+			y = endNode.y;
 			List<Node> queue = new List<Node>();
 
 			startNode.depth = 0;
@@ -39,11 +41,8 @@ namespace AIproject.Logic
 
 				if (testNode.name.Equals(to))
 				{
-
-					Console.WriteLine("The path is:");
 					List<string> path = new List<string>();
 					path = displayPath(testNode, path);
-
 					return path;
 				}
 
@@ -67,41 +66,57 @@ namespace AIproject.Logic
 		private List<string> displayPath(Node currentEl, List<string> path)
 		{
 
-			Console.WriteLine(currentEl.name);
+			path.Add(currentEl.name);
 
 			if (currentEl.depth == 0)
 			{
 				return path;
 			}
 
+			
 			List<Node> nodes = currentEl.GetRelatedNodes();
 
 			foreach (Node el in nodes)
 			{
 				if (el.depth < currentEl.depth)
 				{
-					displayPath(el,path);
+					displayPath(el, path);
 					break;
 				}
 			}
+
 			return path;
 		}
 
-		private void addNodeToQueue(List<Node> queue, Node placingNode)
+		private void addNodeToQueue(List<Node> nodes, Node node)
 		{
-			if (placingNode.isTested || queue.Contains(placingNode))
+			if (node.isTested || nodes.Contains(node))
 				return;
 
-			for (int i = 0; i < queue.Count(); i++)
+			node.weight = calculateFinalWeight(node.x, node.y, node.weight);
+			for (int i = 0; i < nodes.Count(); i++)
 			{
-				if (placingNode.weight < queue[i].weight)
+				nodes[i].weight = calculateFinalWeight(nodes[i].x, nodes[i].y, nodes[i].weight);
+				if (node.weight < nodes[i].weight)
 				{
-					queue.Insert(i, placingNode);
+					nodes.Insert(i, node);
 					return;
 				}
 			}
 
-			queue.Add(placingNode);
+			nodes.Add(node);
+		}
+
+		private double calculateFinalWeight(double x, double y, double weight)
+		{
+			double a = Math.Abs(x - this.x);
+			double b = Math.Abs(y - this.y);
+
+			double xy = Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+
+			double FW = (weight * 0.8) + (xy * 0.6);
+			return FW;
+
 		}
 	}
 }

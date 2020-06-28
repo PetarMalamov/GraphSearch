@@ -14,17 +14,17 @@ namespace AIproject
     public partial class Form1 : Form
     {
         Graph graph = new Graph();
-        BFS BFSalgorithm;
-        WeigthSearch WSalgorithm;
-        string[] methods = { "BFS", "Weigth Search" };
+        BFS bfs;
+        WeigthCoordinatesSearch wcs;
+        string[] methods = { "Shortest path", "Weigth Search" };
         public Form1()
         {
             InitializeComponent();
             SearchPanel.Visible = false;
             AddLinkPanel.Visible = false;
             SearchMethod.Items.AddRange(methods);
-            BFSalgorithm = new BFS(graph);
-            WSalgorithm = new WeigthSearch(graph);
+            bfs = new BFS(graph);
+            wcs = new WeigthCoordinatesSearch(graph);
         }
 
         private void AddComboBoxItem(ComboBox cb,List<string> items)
@@ -46,12 +46,14 @@ namespace AIproject
 
         private void AddNode_Click(object sender, EventArgs e)
         {
-            graph.addNode(new Node(NodeNameTf.Text,Double.Parse(NodeWeightTf.Text)));
+            graph.addNode(new Node(NodeNameTf.Text,Double.Parse(NodeWeightTf.Text),Double.Parse(xTB.Text), Double.Parse(yTB.Text)));
+            MessageBox.Show("Node added");
         }
 
         private void AddLinkButton_Click(object sender, EventArgs e)
         {
             graph.addLink((string)FromNodeCB.SelectedItem,(string)ToNodeCB.SelectedItem,true);
+            MessageBox.Show("Link added");
         }
 
         private void AddLink_Click(object sender, EventArgs e)
@@ -83,11 +85,11 @@ namespace AIproject
             List<string> path = new List<string>();
             switch ((string)SearchMethod.SelectedItem)
             {
-                case "BFS":
-                    path = BFSalgorithm.search(from, to);
+                case "Shortest path":
+                    path = bfs.search(from, to);
                     break;
                 case "Weigth Search":
-                    path = WSalgorithm.search(from, to);
+                    path = wcs.search(from, to);
                     break;
                 default:
                     break;
@@ -102,6 +104,11 @@ namespace AIproject
             {
                 MessageBox.Show("no path");
             }
+        }
+
+        private void lab(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

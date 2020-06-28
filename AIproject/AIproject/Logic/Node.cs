@@ -28,6 +28,12 @@ namespace AIproject.Logic
             this.weight = weight;
         }
 
+        public Node(String name, double weight, double x, double y) : this(name, weight)
+        {
+            this.x = x;
+            this.y = x;
+        }
+
         public void AddLink(Link link)
         {
             if (link == null)

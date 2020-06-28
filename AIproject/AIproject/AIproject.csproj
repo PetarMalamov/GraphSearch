@@ -56,7 +56,7 @@
     <Compile Include="Logic\Graph.cs" />
     <Compile Include="Logic\Link.cs" />
     <Compile Include="Logic\Node.cs" />
-    <Compile Include="Logic\WeigthSearch.cs" />
+    <Compile Include="Logic\WeigthCoordinatesSearch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

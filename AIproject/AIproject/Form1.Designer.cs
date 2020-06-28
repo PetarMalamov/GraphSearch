@@ -54,6 +54,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.yTB = new System.Windows.Forms.TextBox();
+            this.xTB = new System.Windows.Forms.TextBox();
             this.MainPanel.SuspendLayout();
             this.SearchPanel.SuspendLayout();
             this.AddLinkPanel.SuspendLayout();
@@ -91,6 +95,10 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Controls.Add(this.xTB);
+            this.MainPanel.Controls.Add(this.yTB);
+            this.MainPanel.Controls.Add(this.label12);
+            this.MainPanel.Controls.Add(this.label11);
             this.MainPanel.Controls.Add(this.label3);
             this.MainPanel.Controls.Add(this.AddNode);
             this.MainPanel.Controls.Add(this.label2);
@@ -124,7 +132,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 86);
+            this.label2.Location = new System.Drawing.Point(27, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 3;
@@ -132,22 +140,22 @@
             // 
             // NodeWeightTf
             // 
-            this.NodeWeightTf.Location = new System.Drawing.Point(108, 83);
+            this.NodeWeightTf.Location = new System.Drawing.Point(103, 83);
             this.NodeWeightTf.Name = "NodeWeightTf";
-            this.NodeWeightTf.Size = new System.Drawing.Size(141, 20);
+            this.NodeWeightTf.Size = new System.Drawing.Size(57, 20);
             this.NodeWeightTf.TabIndex = 2;
             // 
             // NodeNameTf
             // 
-            this.NodeNameTf.Location = new System.Drawing.Point(108, 43);
+            this.NodeNameTf.Location = new System.Drawing.Point(103, 40);
             this.NodeNameTf.Name = "NodeNameTf";
-            this.NodeNameTf.Size = new System.Drawing.Size(141, 20);
+            this.NodeNameTf.Size = new System.Drawing.Size(57, 20);
             this.NodeNameTf.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 46);
+            this.label1.Location = new System.Drawing.Point(32, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
@@ -163,7 +171,7 @@
             this.SearchPanel.Controls.Add(this.label9);
             this.SearchPanel.Controls.Add(this.label8);
             this.SearchPanel.Controls.Add(this.label7);
-            this.SearchPanel.Location = new System.Drawing.Point(12, 12);
+            this.SearchPanel.Location = new System.Drawing.Point(12, 9);
             this.SearchPanel.Name = "SearchPanel";
             this.SearchPanel.Size = new System.Drawing.Size(291, 162);
             this.SearchPanel.TabIndex = 5;
@@ -246,7 +254,7 @@
             this.AddLinkPanel.Controls.Add(this.label6);
             this.AddLinkPanel.Controls.Add(this.label5);
             this.AddLinkPanel.Controls.Add(this.label4);
-            this.AddLinkPanel.Location = new System.Drawing.Point(12, 12);
+            this.AddLinkPanel.Location = new System.Drawing.Point(9, 9);
             this.AddLinkPanel.Name = "AddLinkPanel";
             this.AddLinkPanel.Size = new System.Drawing.Size(291, 162);
             this.AddLinkPanel.TabIndex = 6;
@@ -304,11 +312,44 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Add link";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(171, 86);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(12, 13);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "y";
+            this.label11.Paint += new System.Windows.Forms.PaintEventHandler(this.lab);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(171, 46);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(12, 13);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "x";
+            // 
+            // yTB
+            // 
+            this.yTB.Location = new System.Drawing.Point(192, 79);
+            this.yTB.Name = "yTB";
+            this.yTB.Size = new System.Drawing.Size(57, 20);
+            this.yTB.TabIndex = 8;
+            // 
+            // xTB
+            // 
+            this.xTB.Location = new System.Drawing.Point(192, 43);
+            this.xTB.Name = "xTB";
+            this.xTB.Size = new System.Drawing.Size(57, 20);
+            this.xTB.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 224);
+            this.ClientSize = new System.Drawing.Size(312, 220);
             this.Controls.Add(this.AddLinkPanel);
             this.Controls.Add(this.SearchPanel);
             this.Controls.Add(this.MainPanel);
@@ -354,6 +395,10 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox xTB;
+        private System.Windows.Forms.TextBox yTB;
+        private System.Windows.Forms.Label label12;
     }
 }
 
