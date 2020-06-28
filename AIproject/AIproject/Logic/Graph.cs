@@ -109,6 +109,7 @@ namespace AIproject.Logic
 			foreach (var item in graph)
 			{
 				item.Value.isTested = false;
+				item.Value.depth = -1;
 			}
 		}
 	}

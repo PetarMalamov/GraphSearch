@@ -16,7 +16,7 @@ namespace AIproject
         Graph graph = new Graph();
         BFS bfs;
         WeigthCoordinatesSearch wcs;
-        string[] methods = { "Shortest path", "Weigth Search" };
+        string[] methods = { "Shortest path","Weigth Search" };
         public Form1()
         {
             InitializeComponent();
